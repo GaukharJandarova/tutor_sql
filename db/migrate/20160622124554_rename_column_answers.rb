@@ -1,7 +1,5 @@
 class RenameColumnAnswers < ActiveRecord::Migration
   def change
-    change_table :answers do |t|
-      t.rename :challende_id, :challenge_id
-    end
+    rename_column :answers, :challende_id, :challenge_id
   end
 end
