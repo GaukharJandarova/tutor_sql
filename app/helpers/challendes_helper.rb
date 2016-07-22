@@ -1,0 +1,2 @@
+module ChallendesHelper
+end

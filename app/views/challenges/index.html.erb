@@ -1,0 +1,13 @@
+<div class="container">
+  <% @challenges.each do |challenge| %>
+        <h3><%= challenge.title %></h3>
+        <p><%= challenge.content %></p>
+        
+      <%= link_to 'Continue', challenge, class: "btn btn-default" %>
+        
+  <% end %>
+</div>
+
+<% if current_user.tutor_flag %>
+<%= link_to 'New Challenge', new_chapter_challenge_path, class: "btn btn-default" %>
+<% end %>

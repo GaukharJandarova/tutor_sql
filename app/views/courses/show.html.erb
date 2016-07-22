@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @course.title %></h3> 
+<p><%= @course.description %></p> 
+<% if user_signed_in? %>
+ <div class="container">
+    <% if @enrolls.any? %>
+     <%= link_to 'Continue', course_chapters_path(@course), class: "btn btn-default" %>
+    <% else %>
+     <%= link_to 'Start', enrolls_path(course_id: @course.id), method: :post , class: "btn btn-default" %>
+    <% end %>
+ </div>
+<% end %>

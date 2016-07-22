@@ -1,0 +1,18 @@
+<% if @course.id? %>
+            <h3><%= @allcourses.title %></h3>
+            <p><%= @allcourses.description.truncate(37, separator: ' ') %></p>
+          <%= link_to 'Start', enrolls_path(course_id: @allcourses.id), method: :post %>
+         <% end %>
+---
+<div class="container">
+  <% @chapters.each do |chapter| %>
+       
+        <h3><%= chapter.title, class: (chapter.available_for?(current_user) ? "disabled" : "") %></h3>
+        <p><%= chapter.content %></p>
+        <%= link_to 'Show', chapter, class: "btn btn-default" %>
+         
+ 
+        <%= link_to 'Edit', edit_chapter_path(chapter), class: "btn btn-default" %>
+        <%= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+    <% end %>
+</div>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Учись кодировать</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'layouts/header' %>
+
+<div id ="main" class="container">
+  <% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+<% end %>
+
+<div id="container" class="col-md-9 center-block">
+  <%= render_breadcrumbs %>
+  <%= yield %>
+  <%#= debug(params) if Rails.env.development? %>
+</div>
+</body>
+</html>

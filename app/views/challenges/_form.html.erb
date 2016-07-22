@@ -1,0 +1,18 @@
+<%= simple_form_for(@path,  html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+  <div class="challenges_wrapper clearfix">
+    <h3 class="challenges_title">
+      <%= f.input :challenge_level %>
+    </h3>
+    <div class="field">
+      <div id="challenges">
+        <%= f.input :title, class: "form_control" %>
+        <%= f.input :content, class: "form_control" %>
+      </div>
+      <%= f.input :correct_result, class: "form_control" %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

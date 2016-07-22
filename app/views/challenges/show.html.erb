@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @challenge.title %></h3>
+<p><%= @challenge.content %></p>
+<div class = "row">
+  <div class = "col-md-6">
+    <%= simple_form_for @answer, url: challenge_answers_path(@challenge), method: :post  do |f| %>    
+     <% if  @answer.is_correctly %>
+        <p>Правильно!</p>
+      <% else %>
+        <h3>Не правильно!</h3>
+      <% end %> 
+      <div class="field">
+        <%= f.text_area :answer_text , size: "50x10" %>
+        <%= f.submit "Run", class: "btn btn-primary" %>
+      </div>
+    
+    <% end %>
+  </div>
+  
+  <div class = "col-md-6">
+    
+    <div class="form-inputs", style="background-color:powderblue;">
+    <% if @result  %>
+      <%= tp_pre @result %>
+    <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to 'Back', chapter_challenges_path(@challenge.chapter_id), class: "btn btn-default" %>
+<%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-default" %>
+<%= link_to 'Destroy', @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>

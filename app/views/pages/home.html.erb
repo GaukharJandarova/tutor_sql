@@ -1,0 +1,7 @@
+<h3>Добро пожаловать в школу интерактивного обучения SQL!</h3>
+<div class="course row clearfix">
+    <% @courses.each do |course| %>
+        <h3><%= link_to course.title, course %></h3>
+        <p><%= course.description.truncate(37, separator: ' ') %></p>
+    <% end %>
+</div> 

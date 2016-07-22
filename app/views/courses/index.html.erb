@@ -1,0 +1,28 @@
+<h1>список курсов</h1>
+
+<div class="container">
+    <% @courses.each do |course| %>
+      <div class="field-content">
+        <h3><%= course.title %></h3>
+        <p><%= course.description %></p>
+      </div>
+      <% if user_signed_in? %>
+          <% enroll = current_user.enroll_of(course) %>
+          <% if enroll.nil? %>
+            <%= link_to 'Start', enrolls_path(course_id: course.id), method: :post %>
+          <% else %>
+            <%= link_to 'Continue', course_chapters_path(course) %>
+          <% end %>
+      
+      <br>
+        <% if current_user.admin_flag %>
+          <%= link_to 'Edit', edit_course_path(course) %>
+          <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      <% end %>
+    <% end %>
+</div>
+
+<br>
+<p>если юзер=ментор</p>
+<%= link_to 'New Course', new_course_path %>

@@ -1,0 +1,9 @@
+class MyTable1 < ActiveRecord::Migration
+  def change
+    create_table :mytable1 do |t|
+      t.integer  :user_id
+      t.string  :user_name
+      t.timestamps null: false
+    end
+  end
+end

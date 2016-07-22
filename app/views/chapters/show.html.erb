@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<b><%= @chapter.title %></b>
+<p><%= @chapter.content %></p>
+
+<i>текстовая версия главы</i>
+<i>со временем добавлю видео-урок</i>
+<i>статистика юзера</i><br>
+<% if current_user.tutor_flag? %>
+  <%= link_to 'Edit', edit_chapter_path(@chapter) %>
+<% end %>
+
+<%= link_to 'Back', course_chapters_path(@chapter.course) %>

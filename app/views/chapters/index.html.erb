@@ -1,0 +1,22 @@
+<div class="container">
+  <% @chapters.each do |chapter| %>
+       
+        <h3><%= chapter.title %></h3>
+        <p><%= chapter.content %></p>
+        <div class="btn-group">
+          
+          <% if chapter.id.to_i <= @enroll_chapter.to_i %>
+            <%= link_to 'Continue', chapter_challenges_path(chapter), class: "btn btn-default" %>
+          <% end %>
+            <% if current_user.tutor_flag %>
+              <%= link_to 'Edit', edit_chapter_path(chapter), class: "btn btn-default" %>
+              <%= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+            <% end %>
+        </div>
+        
+    <% end %>
+</div>
+
+<% if current_user.tutor_flag %>
+<%= link_to 'New Chapter', new_course_chapter_path, class: "btn btn-default" %>
+<% end %>
